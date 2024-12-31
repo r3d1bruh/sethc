@@ -24,8 +24,8 @@ if ! command -v ntfsfix &> /dev/null; then
     fi
 fi
 
-# Mount all drives (assuming drives are /dev/sd* and mount points are /mnt/sd*)
-for drive in /dev/sd*; do
+# Mount all drives (assuming drives are /dev/sd*, /dev/nvme* and mount points are /mnt/sd*)
+for drive in /dev/sd* /dev/nvme*; do
     if [ -b "$drive" ]; then
         mount_point="/mnt/$(basename $drive)"
         mkdir -p "$mount_point"
